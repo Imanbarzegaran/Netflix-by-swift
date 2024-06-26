@@ -22,10 +22,11 @@ class HeroHeaderUIView: UIView {
     private let playButton: UIButton = {
        let button = UIButton()
         button.setTitle("Play", for: .normal)
-        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.borderColor = UIColor.label.cgColor
         button.layer.borderWidth = 1
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 6
+        
         return button
     }()
     
