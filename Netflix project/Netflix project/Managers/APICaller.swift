@@ -11,6 +11,7 @@ struct Constants {
     static let API_KEY = "adcf99845fb2d58ba68b37fbb75f683b"
     static let baseURL = "https://api.themoviedb.org/"
     static let YoutubeAPI_KEY = "AIzaSyAP64YO4ABArSz5w3eSDCRN53a3qL6A_IA"
+                                
     static let YoutubeBaseURL = "https://youtube.googleapis.com/youtube/v3/search?"
 }
 
@@ -157,6 +158,7 @@ class APICaller {
         guard let url = URL(string: "\(Constants.YoutubeBaseURL)q=\(query)&safeSearch=none&key=\(Constants.YoutubeAPI_KEY)") else {
             return
         }
+        
         let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, _, error in
             guard let data = data, error == nil else {
                 return
