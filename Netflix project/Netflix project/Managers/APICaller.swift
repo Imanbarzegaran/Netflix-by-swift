@@ -8,8 +8,8 @@
 import Foundation
 
 struct Constants {
-    static let API_KEY = "adcf99845fb2d58ba68b37fbb75f683b"
-    static let baseURL = "https://api.themoviedb.org/"
+    static let API_KEY = "dbeca09bb386263ea41ec97ca6a2968a"
+    static let baseURL = "https://api.themoviedb.org"
     static let YoutubeAPI_KEY = "AIzaSyAP64YO4ABArSz5w3eSDCRN53a3qL6A_IA"
                                 
     static let YoutubeBaseURL = "https://youtube.googleapis.com/youtube/v3/search?"
@@ -21,7 +21,7 @@ enum APIError: Error {
 
 class APICaller {
     static let shared = APICaller()
-    
+                                              
     
     func getTrendingMovies(completion: @escaping (Result<[Title], Error>) -> Void) {
         guard let url = URL(string: "\(Constants.baseURL)/3/trending/movie/day?api_key=\(Constants.API_KEY)") else { return}
@@ -30,9 +30,10 @@ class APICaller {
                 return
             }
             do {
+             
                 let results = try JSONDecoder().decode(TrendingTitleResponse.self, from: data)
                 completion(.success(results.results))
-                
+              
             }catch {
                 completion(.failure(APIError.failedToGetdata))
             }
